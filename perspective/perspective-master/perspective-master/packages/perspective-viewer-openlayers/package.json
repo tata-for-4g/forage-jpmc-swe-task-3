@@ -1,0 +1,38 @@
+{
+    "name": "@finos/perspective-viewer-openlayers",
+    "version": "2.3.0",
+    "unpkg": "dist/cdn/perspective-viewer-openlayers.js",
+    "jsdelivr": "dist/cdn/perspective-viewer-openlayers.js",
+    "exports": {
+        ".": "./dist/esm/perspective-viewer-openlayers.js",
+        "./dist/*": "./dist/*",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist/**/*",
+        "index.d.ts"
+    ],
+    "types": "index.d.ts",
+    "author": "",
+    "license": "Apache-2.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "node build.js",
+        "clean": "rimraf dist",
+        "clean:screenshots": "rimraf \"test/screenshots/**/*.@(failed|diff).png\""
+    },
+    "dependencies": {
+        "@finos/perspective": "^2.3.0",
+        "@finos/perspective-viewer": "^2.3.0",
+        "d3": "^7.1.1",
+        "d3-color": "^3.0.1",
+        "gradient-parser": "1.0.2",
+        "less": "^4.1.0",
+        "ol": "^5.3.2"
+    },
+    "devDependencies": {
+        "@finos/perspective-esbuild-plugin": "^2.3.0"
+    }
+}

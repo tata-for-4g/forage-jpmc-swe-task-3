@@ -1,0 +1,40 @@
+@import "@finos/perspective-viewer/dist/css/themes.css";
+
+div.PSPContainer {
+    overflow: auto;
+    resize: both;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    height: 100%;
+    flex: 1;
+}
+
+// Widget height for Jupyterlab
+.jp-NotebookPanel-notebook div.PSPContainer {
+    height: 520px;
+}
+
+// override for small style
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea {
+    max-height: unset;
+    margin: auto;
+}
+
+// Widget height for Voila
+.jp-OutputArea-output div.PSPContainer {
+    height: 520px;
+}
+
+// Widget height for Jupyter Notebook
+.jupyter-widgets-view div.PSPContainer {
+    height: 520px;
+}
+
+div.PSPContainer perspective-viewer[theme="Pro Light"] {
+    --plugin--border: 1px solid #e0e0e0;
+}
+
+div.PSPContainer perspective-viewer {
+    display: block;
+    height: 98%;
+}

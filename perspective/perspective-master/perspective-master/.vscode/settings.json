@@ -1,0 +1,15 @@
+{
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "${workspaceFolder}/cpp/perspective/",
+    "cmake.buildEnvironment": {
+        "PSP_ENABLE_WASM": "1"
+    },
+    "python.formatting.provider": "black",
+    "rust-analyzer.linkedProjects": [
+        "${workspaceFolder}/rust/perspective-viewer/Cargo.toml"
+    ],
+    "rust-analyzer.check.command": "clippy",
+    "playwright.env": {
+        "TZ": "UTC"
+    }
+}

@@ -1,0 +1,51 @@
+<!--
+
+   Copyright (c) 2017, the Perspective Authors.
+
+   This file is part of the Perspective library, distributed under the terms of
+   the Apache License 2.0.  The full license can be found in the LICENSE file.
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="module" src="/perspective-viewer.js"></script>
+        <script type="module">
+            const BASE = customElements.get("perspective-viewer-plugin");
+            class TestChartPluginHighPriority extends BASE {
+                get name() {
+                    return "HighPriority";
+                }
+
+                get priority() {
+                    return 10;
+                }
+            }
+
+            class TestChartPluginLowPriority extends BASE {
+                get name() {
+                    return "LowPriority";
+                }
+
+                get priority() {
+                    return -10;
+                }
+            }
+
+            customElements.define("low-priority", TestChartPluginLowPriority);
+            customElements.define("high-priority", TestChartPluginHighPriority);
+            const Viewer = customElements.get("perspective-viewer");
+            Viewer.registerPlugin("low-priority");
+            Viewer.registerPlugin("high-priority");
+        </script>
+
+        <script type="module" src="/load-viewer-csv.js"></script>
+        <link rel="stylesheet" href="../css/demo.css" />
+        <link rel="stylesheet" href="/@finos/perspective-viewer/dist/css/pro.css" />
+        <link rel="stylesheet" href="/@fontsource/roboto-mono/400.css" />
+    </head>
+    <body>
+        <perspective-viewer></perspective-viewer>
+    </body>
+</html>

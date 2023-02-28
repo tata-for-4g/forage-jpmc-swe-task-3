@@ -1,0 +1,167 @@
+[package]
+name = "perspective"
+version = "2.3.0"
+authors = ["Andrew Stein <steinlink@gmail.com>"]
+edition = "2021"
+description = "A data visualization and analytics component, especially well-suited for large and/or streaming datasets."
+repository = "https://github.com/finos/perspective"
+license = "Apache-2.0"
+homepage = "https://perspective.finos.org"
+keywords = ["experimental"]
+build = "build.rs"
+include = [
+    "build.rs",
+    "src/**/*",
+    "Cargo.toml",
+    "package.json",
+    "tasks/xbuild/*",
+]
+
+[workspace]
+members = ["tasks/bundle"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/rust/lib.rs"
+
+[features]
+define_custom_elements_async = []
+default = []
+
+[profile.dev]
+panic = "abort"
+opt-level = "s"
+
+[profile.release]
+panic = "abort"
+opt-level = "z"
+codegen-units = 1
+lto = true
+strip = true
+
+[build-dependencies]
+serde_json = { version = "1.0.59", features = ["raw_value"] }
+procss = { version = "0.1.13" }
+glob = "0.3.0"
+anyhow = "1.0.66"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[dependencies]
+# Provides async `Mutex` for locked sections such as `render`
+async-lock = "2.5.0"
+
+# Allow async methods to be used in traits
+async-trait = "^0.1.52"
+
+# Encode persistence tokens
+base64 = "0.13.0"
+
+# Timezone correction
+chrono = "0.4"
+
+# More derivable traits
+derivative = "2.2.0"
+
+# Easy way to define & implement a singleton trait (type extension)
+extend = "1.1.2"
+
+# Compress tokens
+flate2 = "1.0.20"
+
+# General async tools
+futures = "0.3.12"
+
+# General iterator improvements
+itertools = "0.10.1"
+
+# Performance improvements for common string to JS conversions
+js-intern = "0.3.1"
+
+# JavaScript stdlib bindings
+js-sys = "0.3"
+
+# Parse ExprTK for syntax highlighting.
+nom = "7.1.1"
+
+# Comma-sep numeric representation
+num-format = "0.4.4"
+
+# MessagePack serialization
+rmp-serde = "1.1.1"
+
+# Serialization for tokens and JS APIs
+serde = { version = "1.0", features = ["derive"] }
+
+# Support for "unknown"/dictionary types such as `plugin_config`
+serde_json = { version = "1.0.85", features = ["raw_value"] }
+
+# Faster struct serialize/deserialize
+serde-wasm-bindgen = "0.4.5"
+
+# Async-aware logging that can be disabled at compile-time.
+tracing = { version = ">=0.1.36", features = ["release_max_level_error"] }
+tracing-subscriber = "0.3.15"
+
+# Browser API bindings
+wasm-bindgen = { version = "=0.2.84", features = ["serde-serialize"] }
+
+# Browser `Promise` bindings
+wasm-bindgen-futures = "0.4.20"
+
+# Web framework
+yew = { version = "0.20.0", features = ["csr"] }
+
+# Browser stdlib bindings
+web-sys.version = "0.3.59"
+web-sys.features = [
+    "Blob",
+    "Clipboard",
+    "CssStyleDeclaration",
+    "CssStyleSheet",
+    "CssRuleList",
+    "CssRule",
+    "CssStyleRule",
+    "CustomEvent",
+    "CustomEventInit",
+    "DataTransfer",
+    "Document",
+    "DomRect",
+    "DomStringMap",
+    "DomTokenList",
+    "Element",
+    "Event",
+    "EventTarget",
+    "EventListener",
+    "FontFace",
+    "FontFaceSet",
+    "FontFaceSetIterator",
+    "FontFaceSetIteratorResult",
+    "HtmlCollection",
+    "HtmlElement",
+    "HtmlTextAreaElement",
+    "HtmlStyleElement",
+    "HtmlSelectElement",
+    "InputEvent",
+    "KeyboardEvent",
+    "MutationObserver",
+    "MutationObserverInit",
+    "MutationRecord",
+    "Navigator",
+    "Node",
+    "NodeList",
+    "Performance",
+    "PerformanceMark",
+    "Range",
+    "ReadableStreamDefaultReader",
+    "Selection",
+    "ShadowRoot",
+    "ShadowRootMode",
+    "ShadowRootInit",
+    "StyleSheet",
+    "StyleSheetList",
+    "Url",
+    "VisibilityState",
+    "Window",
+]

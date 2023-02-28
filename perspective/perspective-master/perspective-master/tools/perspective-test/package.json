@@ -1,0 +1,25 @@
+{
+    "name": "@finos/perspective-test",
+    "version": "2.3.0",
+    "description": "Test utility based on perspective",
+    "private": true,
+    "main": "src/js/index",
+    "module": "src/js/index",
+    "files": [
+        "src/**/*"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/finos/perspective/tools/perspective-test"
+    },
+    "scripts": {
+        "prebench": "mkdirp build",
+        "bench": "node bench/versions.js"
+    },
+    "author": "",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@finos/perspective": "^2.3.0",
+        "xml-formatter": "2.4.0"
+    }
+}
